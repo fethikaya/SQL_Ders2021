@@ -3,12 +3,12 @@
 /*==================== SET OPERATORLERI: UNION, UNION ALL======================
     
     UNION, UNION ALL, INTERSECT, ve MINUS gibi SET operatorleri yardimiyla  
-    Çoklu Sorgular birlestirilebilirler.
+    Ã‡oklu Sorgular birlestirilebilirler.
     UNION :  Bir SET operatorudur. 2 veya daha fazla Sorgu ifadesinin sonuc 
     kumelerini birlesitirerek tek bir sonuc kumesi olusturur.    
    
-    NOT:  Birleþik olan olan Sorgu ifadesinin veri türü diðer sorgulardaki 
-    ifadelerin veri türü ile uyumlu olmalýdýr.
+    NOT:  BirleÃ¾ik olan olan Sorgu ifadesinin veri tÃ¼rÃ¼ diÃ°er sorgulardaki 
+    ifadelerin veri tÃ¼rÃ¼ ile uyumlu olmalÃ½dÃ½r.
     
     Syntax:
     ----------
@@ -16,8 +16,8 @@
     UNION
     SELECT sutun_adi1, sutun_adi2, .. FROM tablo_adi2;
     
-    NOT: UNION operatoru SADECE benzersi degerleri alýr. Benzerli verileri almak
-    için UNION ALL kullanýlýr.
+    NOT: UNION operatoru SADECE benzersi degerleri alÃ½r. Benzerli verileri almak
+    iÃ§in UNION ALL kullanÃ½lÃ½r.
 ==============================================================================*/ 
   
     CREATE TABLE personel4 
@@ -41,14 +41,14 @@
     SELECT * FROM personel4;
     
 /* -----------------------------------------------------------------------------
-  ORNEK1: Maasi 4000’den cok olan isci isimlerini ve 5000 liradan fazla maas 
+  ORNEK1: Maasi 4000â€™den cok olan isci isimlerini ve 5000 liradan fazla maas 
   alinan sehirleri gosteren sorguyu yaziniz
 ------------------------------------------------------------------------------*/
     
     SELECT isim AS isim_veya_sehir, maas
     FROM personel4
     WHERE maas > 4000
-        UNION ALL   -- Ortak olanlarý da gösterir
+        UNION ALL   -- Ortak olanlarÃ½ da gÃ¶sterir
     SELECT sehir, maas 
     FROM personel4
     WHERE maas > 5000;
@@ -57,21 +57,21 @@
      SELECT isim AS isim_veya_sehir, maas
     FROM personel4
     WHERE maas > 4000
-        UNION    -- -- Ortak olanlarý bir sefer gösterir
+        UNION    -- -- Ortak olanlarÃ½ bir sefer gÃ¶sterir
     SELECT sehir, maas 
     FROM personel4
     WHERE maas > 5000;
     
     /* -----------------------------------------------------------------------------
-  ORNEK2: Maasi 4000’den cok olan isci isimlerini ve 5000 liradan fazla maas
- alinan sehirleri gosteren sorguyu Tekrarlý verileri de gösterecek þekilde
+  ORNEK2: Maasi 4000â€™den cok olan isci isimlerini ve 5000 liradan fazla maas
+ alinan sehirleri gosteren sorguyu TekrarlÃ½ verileri de gÃ¶sterecek Ã¾ekilde
   yaziniz.
 ------------------------------------------------------------------------------*/
 
 
 /* -----------------------------------------------------------------------------
-  ORNEK3: Mehmet Ozturk ismindeki kisilerin aldigi maaslari ve Istanbul’daki
-  personelin maaslarini yüksekten açaða doðru sýralayarak bir tabloda gosteren
+  ORNEK3: Mehmet Ozturk ismindeki kisilerin aldigi maaslari ve Istanbulâ€™daki
+  personelin maaslarini yÃ¼ksekten aÃ§aÃ°a doÃ°ru sÃ½ralayarak bir tabloda gosteren
   sorguyu yaziniz.   
 ------------------------------------------------------------------------------*/
 
@@ -107,7 +107,7 @@ ORDER BY maas DESC;
     SELECT * FROM personel_bilgi;
 ?
 /* -----------------------------------------------------------------------------
-  ORNEK4: id’si 123456789 olan personelin Personel tablosundan sehir ve 
+  ORNEK4: idâ€™si 123456789 olan personelin Personel tablosundan sehir ve 
   maasini, personel_bilgi tablosundan da tel ve cocuk sayisini yazdirin  
 ------------------------------------------------------------------------------*/  
 
@@ -119,8 +119,8 @@ SELECT tel,cocuk_sayisi
 FROM personel_bilgi
 WHERE id = 123456789;
     
-    /* Þehir ve tel, maaþ ile çocuk ayný sutnda birleþiði için 
-    veri tipleri ayný olmak zorunda /*
+    /* Ãžehir ve tel, maaÃ¾ ile Ã§ocuk aynÃ½ sutnda birleÃ¾iÃ°i iÃ§in 
+    veri tipleri aynÃ½ olmak zorunda /*
     
     
     /*========================= SET OPERATORLERI: INTERSECT ========================
@@ -137,7 +137,7 @@ WHERE id = 123456789;
     
 ==============================================================================*/
 /* -----------------------------------------------------------------------------
-  ORNEK5: Personel tablosundan Istanbul veya Ankara’da calisanlarin id’lerini
+  ORNEK5: Personel tablosundan Istanbul veya Ankaraâ€™da calisanlarin idâ€™lerini
   sorgulayiniz. 
  
   Personel_bilgi tablosundan 2 veya 3 cocugu olanlarin id lerini sorgulayiniz.
@@ -147,7 +147,7 @@ WHERE id = 123456789;
 SELECT id
 FROM personel4
 WHERE sehir IN ('Ankara','Istanbul')
-    INTERSECT       -- Sadece ortak olanlarý göstercek. Kesiþen küme
+    INTERSECT       -- Sadece ortak olanlarÃ½ gÃ¶stercek. KesiÃ¾en kÃ¼me
 SELECT id
 FROM personel_bilgi
 WHERE cocuk_sayisi IN (2,3);
